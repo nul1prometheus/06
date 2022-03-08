@@ -4,69 +4,15 @@ import random
 # https://goo.gl/Go2mb9
 #
 # Правила:
-# Компьютер загадывает четырехзначное число, все цифры которого различны
-# (первая цифра числа отлична от нуля).
 
-def randomizing():
-    global komp_number
-    komp_number = random.randint(0, 9)
-    return komp_number
+import randomizing_komp_number
 
-komp_number_all = []
 
-for _ in range(4):
-    while randomizing() in komp_number_all:
-        randomizing()
-    komp_number_all.append(komp_number)
-# print(komp_number_all)
 # Игроку необходимо разгадать задуманное число.
 # Игрок вводит четырехзначное число c неповторяющимися цифрами,
-# user_digit = None
-# def input_digit():
-#     user_digit = input()
-#     # try:
-#     #     int(user_digit)
-#     # except ValueError:
-#     #     print('Digit require, try again')
-#     # while (int(user_digit) / 10) > 1:
-#     #     print('Input 1 digit! Try again')
-#     #     user_digit = input()
-#         # try:
-#         #     int(user_digit)
-#         # except ValueError:
-#         #     print('Digit require, try again')
-#     return user_digit
 
 user_number_list = []
 
-# for _ in range(4):
-#     print('Input', _, 'digit:')
-#     user_digit = input()
-#     # print('Require different digits, try again')
-#         # user_number_list.clear()
-#     user_number_list.append(int(user_digit))
-#     print(user_number_list)
-# print(user_number_list)
-# user_number = input()
-# user_number_int = int(user_number)
-# while (user_number_int < 1000):
-#     print('Need 4 digits! Try again please')
-#     user_number = input()
-#     user_number_int = int(user_number)
-# if (user_number[0] == user_number[1]) or (user_number[0] == user_number[2]) or (user_number[0] == user_number[3]):
-#     print('Every digits must be different! Try again')
-#     user_number = input()
-#     user_number_int = int(user_number)
-# if (user_number[1] == user_number[2]) or (user_number[1] == user_number[3]):
-#     print('Every digits must be different! Try again')
-#     user_number = input()
-#     user_number_int = int(user_number)
-# if user_number[2] == user_number[3]:
-#     print('Every digits must be different! Try again')
-#     user_number = input()
-#     user_number_int = int(user_number)
-# print(user_number)
-#
 cows = 0
 bulls = 0
 moves = 0
@@ -82,7 +28,7 @@ while bulls < 4:
         forwhilenumber //= 10
 
     user_number_list.reverse()
-    # print(user_number_list)
+
 #
 # # компьютер сообщают о количестве «быков» и «коров» в названном числе
 # # «бык» — цифра есть в записи задуманного числа и стоит в той же позиции,
@@ -91,11 +37,11 @@ while bulls < 4:
 # #       что и в задуманном числе
 
     for _ in range(4):
-        if (user_number_list[_] == komp_number_all[_]):
+        if (user_number_list[_] == randomizing_komp_number.komp_number_all[_]):
             bulls += 1
     for _ in range(4):
         for __ in range(4):
-            if user_number_list[_] == komp_number_all[__]:
+            if user_number_list[_] == randomizing_komp_number.komp_number_all[__]:
                 cows += 1
     print('bulls =', bulls)
     print('cows =', cows)
